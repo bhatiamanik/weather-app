@@ -46,9 +46,15 @@ class splashscreen : AppCompatActivity() {
                     if (location == null) {
                         NewLocation()
                     } else {
-                        Log.i("Location", location.longitude.toString())
-                        Toast.makeText(this, location.longitude.toString(), Toast.LENGTH_LONG).show()
-                        Toast.makeText(this, location.latitude.toString(), Toast.LENGTH_LONG).show()
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            val intent =Intent(this,MainActivity::class.java)
+                            intent.putExtra("lat",location.latitude.toString())
+                            intent.putExtra("long",location.longitude.toString())
+                            startActivity(intent)
+                            finish()
+                        },2000)
+
+
                     }
                 }
             } else {
