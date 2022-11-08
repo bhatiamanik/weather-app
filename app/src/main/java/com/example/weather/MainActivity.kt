@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.RequestFuture
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -15,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val lat =intent.getStringExtra("lat")
         val long =intent.getStringExtra("long")
-        Toast.makeText(this,lat+" "+long,Toast.LENGTH_SHORT).show()
         getJsonData(lat, long)
     }
 
@@ -24,11 +24,14 @@ class MainActivity : AppCompatActivity() {
         val API_Key="d782c3641dcc9cbcb8528dfb0245b3e4"
           val queue =Volley.newRequestQueue(this)
         val url="https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_Key}"
-        val stringRequest=StringRequest(
-            Request.Method.GET,url,
-            Response.Listener<String>{response ->
+        val jsonRequest=JsonObjectRequest(
+            Request.Method.GET,url,null,
+            Response.Listener{response ->
+
             },
-        Response.ErrorListener{})
+        Response.ErrorListener{Toast.makeText(this,"ERROR ",Toast.LENGTH_LONG).show()})
+
+        queue.add(jsonRequest)
 
 
     }
