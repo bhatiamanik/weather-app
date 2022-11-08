@@ -58,7 +58,7 @@ class splashscreen : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "please on your GPS", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "please on your GPS", Toast.LENGTH_LONG).show()//iju
             }
 
 
