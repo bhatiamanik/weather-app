@@ -105,7 +105,7 @@ class splashscreen : AppCompatActivity() {
         if (
             ActivityCompat.checkSelfPermission(
                 this,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION
+                android.Manifest.permission.ACCESS_COARSE_LOCATION  //hello
             )
             == PackageManager.PERMISSION_GRANTED ||
             ActivityCompat.checkSelfPermission(
