@@ -40,19 +40,18 @@ class splashscreen : AppCompatActivity() {
     private fun getLastLocation() {
         if (checkLocation()) {
             if (LocationEnable()) {
-                mfusedlocation.lastLocation.addOnCompleteListener {
-                        task ->
+                mfusedlocation.lastLocation.addOnCompleteListener { task ->
                     var location: Location? = task.result
                     if (location == null) {
                         NewLocation()
                     } else {
                         Handler(Looper.getMainLooper()).postDelayed({
-                            val intent =Intent(this,MainActivity::class.java)
-                            intent.putExtra("lat",location.latitude.toString())
-                            intent.putExtra("long",location.longitude.toString())
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.putExtra("lat", location.latitude.toString())
+                            intent.putExtra("long", location.longitude.toString())
                             startActivity(intent)
                             finish()
-                        },2000)
+                        }, 2000)
 
 
                     }
@@ -76,11 +75,12 @@ class splashscreen : AppCompatActivity() {
         locationRequest.fastestInterval = 0
         locationRequest.numUpdates = 1
         mfusedlocation = LocationServices.getFusedLocationProviderClient(this)
-        mfusedlocation.requestLocationUpdates(locationRequest,locationCallBack, Looper.myLooper())
+        mfusedlocation.requestLocationUpdates(locationRequest, locationCallBack, Looper.myLooper())
     }
-    private val locationCallBack=object :LocationCallback(){
-        override fun onLocationResult(p0:LocationResult){
-            var lastLocation:Location=p0.lastLocation
+
+    private val locationCallBack = object : LocationCallback() {
+        override fun onLocationResult(p0: LocationResult) {
+            var lastLocation: Location = p0.lastLocation
         }
     }
 
