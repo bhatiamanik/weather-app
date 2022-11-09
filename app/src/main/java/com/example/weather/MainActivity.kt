@@ -51,15 +51,15 @@ class MainActivity : AppCompatActivity() {
         weather.text = response.getJSONArray("weather").getJSONObject(0).getString("main")
         var tempr = response.getJSONObject("main").getString("temp")
         tempr = ((((tempr).toFloat() - 273.15)).toInt()).toString()
-        temp.text = "${tempr}C"
+        temp.text = "${tempr}°C"
 
         var mintemp = response.getJSONObject("main").getString("temp_min")
         mintemp = ((((mintemp).toFloat() - 273.15)).toInt()).toString()
-        min_temp.text = mintemp + "C"
+        min_temp.text = mintemp + "°C"
 
         var maxtemp = response.getJSONObject("main").getString("temp_max")
         maxtemp = ((ceil((maxtemp).toFloat() - 273.15)).toInt()).toString()
-        max_temp.text = maxtemp + "C"
+        max_temp.text = maxtemp + "°C"
 
         pressure.text = response.getJSONObject("main").getString("pressure")
         humidity.text = response.getJSONObject("main").getString("humidity") + "%"
