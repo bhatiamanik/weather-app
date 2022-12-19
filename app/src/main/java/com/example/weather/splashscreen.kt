@@ -51,7 +51,7 @@ class splashscreen : AppCompatActivity() {
                             intent.putExtra("long", location.longitude.toString())
                             startActivity(intent)
                             finish()
-                        }, 2000)
+                        }, 500)
 
 
                     }
